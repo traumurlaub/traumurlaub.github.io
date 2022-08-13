@@ -1,0 +1,9 @@
+{
+  "name": "istanbul",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "author": "zdarova90210",
+  "license": "ISC"
+}
