@@ -11,9 +11,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 .main {
+    position: relative;
     width: 390px;
     height: 843px;
     background-image: url('assets/img/bg.png');
@@ -21,16 +23,29 @@ body {
     background-repeat: no-repeat;
 }
 
+.nazar {
+    display: block;
+    margin: 64px auto 0 auto;
+}
+
 .title {
     font-family: Poppins, sans-serif;
-    margin-top: 12px;
+    margin-top: 18px;
     text-align: center;
     color: #fff;
     font-size: 48px;
     -webkit-text-stroke: 1px #000;
 }
 
-.nazar {
-    display: block;
-    margin: 64px auto 0 auto;
+.trajectory {
+    position: absolute;
+    top: 270px;
+}
+
+
+.plane {
+    position: absolute;
+    top: 270px;
+    right: 48px;
+    transform: rotate(-7deg);
 }
