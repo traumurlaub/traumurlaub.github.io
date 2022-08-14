@@ -1,21 +1,14 @@
-import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements AfterViewInit {
-
-  @ViewChild('y') $years: ElementRef;
-  @ViewChild('mo') $months: ElementRef;
-  @ViewChild('d') $days: ElementRef;
-  @ViewChild('h') $hours: ElementRef;
-  @ViewChild('m') $minutes: ElementRef;
-  @ViewChild('s') $seconds: ElementRef;
-
+export class AppComponent implements OnInit {
   public now = new Date();
-  public targetDate = new Date(2072, 6, 8).getTime(); // 8 июля
+  public targetDate = new Date(2072, 6, 8); // 8 июля
+  public targetTime = this.targetDate.getTime();
   public years = 0;
   public months = 0;
   public days = 0;
@@ -26,7 +19,7 @@ export class AppComponent implements AfterViewInit {
   constructor() {
   }
 
-  ngAfterViewInit() {
+  ngOnInit() {
     this._update();
     setInterval(() => {
       this._update()
@@ -34,37 +27,43 @@ export class AppComponent implements AfterViewInit {
   }
 
   private _update() {
-
-    const current_date = new Date().getTime();
-    let secondsLeft = (this.targetDate - current_date) / 1000;
-
-    this.years = secondsLeft / 31536000;
-    secondsLeft = secondsLeft % 31536000;
-
-    this.months = secondsLeft / 2678400;
-    secondsLeft = secondsLeft % 2678400;
-
-    this.days = secondsLeft / 86400;
-    secondsLeft = secondsLeft % 86400;
-
-    this.hours = secondsLeft / 3600;
-    secondsLeft = secondsLeft % 3600;
-
-    this.minutes = secondsLeft / 60;
-    this.seconds = secondsLeft % 60;
-
-    this.$years.nativeElement.innerText = this._pad(this.years, 2);
-    this.$months.nativeElement.innerText = this._pad(this.years, 2);
-    this.$days.nativeElement.innerText = this._pad(this.days, 2);
-    this.$hours.nativeElement.innerText = this._pad(this.hours, 2);
-    this.$minutes.nativeElement.innerText = this._pad(this.minutes, 2);
-    this.$seconds.nativeElement.innerText = this._pad(this.seconds, 2);
+    const currentDate = new Date();
+    const currentTime = currentDate.getTime();
+    let secondsLeft = (this.targetTime - currentTime) / 1000;
+    this.years = this._calculateYear(currentDate, this.targetDate);
+    //
+    // this.months = secondsLeft / 2678400;
+    // secondsLeft = secondsLeft % 2678400;
+    //
+    // this.days = secondsLeft / 86400;
+    // secondsLeft = secondsLeft % 86400;
+    //
+    // this.hours = secondsLeft / 3600;
+    // secondsLeft = secondsLeft % 3600;
+    //
+    // this.minutes = secondsLeft / 60;
+    // this.seconds = secondsLeft % 60;
+    //
+    // this.years = this._pad(this.years, 2);
+    // this.months = this._pad(this.years, 2);
+    // this.days = this._pad(this.days, 2);
+    // this.hours = this._pad(this.hours, 2);
+    // this.minutes = this._pad(this.minutes, 2);
+    // this.seconds = this._pad(this.seconds, 2);
   }
 
-  private _pad(num: number, size: number): string {
-    let s = num + "";
+  private _calculateYear(currentDate: Date, targetDate: Date): number {
+    const targetDateCopy = new Date(targetDate.getTime());
+    targetDateCopy.setFullYear(new Date().getFullYear());
+    return currentDate > targetDateCopy ?
+      this.targetDate.getFullYear() - currentDate.getFullYear() - 1 :
+      this.targetDate.getFullYear() - currentDate.getFullYear();
+  }
+
+  private _pad(num: number, size: number): number {
+    let s = Math.round(num) + "";
     while (s.length < size) s = "0" + s;
-    return s;
+    return parseInt(s);
   }
 
 
