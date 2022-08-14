@@ -4,24 +4,12 @@
   <img src="assets/img/trajectory.png" alt="Trajectory" class="trajectory">
   <img src="assets/img/plane.png" alt="Plane" class="plane">
 
-  <ul class="counter">
-    <li>
-      <div><span>{{years}}</span><span class="years">Years</span></div>
-    </li>
-    <li>
-      <div><span>{{months}}</span><span class="months">Months</span></div>
-    </li>
-    <li>
-      <div><span>{{days}}</span><span class="days">Days</span></div>
-    </li>
-    <li>
-      <div><span>{{hours}}</span><span class="hours">Hours</span></div>
-    </li>
-    <li>
-      <div><span>{{minutes}}</span><span class="minutes">Minutes</span></div>
-    </li>
-    <li>
-      <div><span>{{seconds}}</span><span class="seconds">Seconds</span></div>
-    </li>
-  </ul>
+  <div class="counter">
+    <div class="counter__top">
+      <div class="counter__part">{{years}} <div class="counter__subtext">years</div></div>
+      <div class="counter__part">{{months}} <div class="counter__subtext">months</div></div>
+      <div class="counter__part">{{days}} <div class="counter__subtext">days</div></div>
+    </div>
+    <div class="counter__part">{{hours}}:{{minutes}}</div>
+  </div>
 </main>
