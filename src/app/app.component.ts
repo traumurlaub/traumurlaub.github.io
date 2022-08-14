@@ -5,10 +5,12 @@ import {
   differenceInDays,
   differenceInHours,
   differenceInMinutes,
+  differenceInSeconds,
   subYears,
   subMonths,
   subDays,
-  subHours
+  subHours,
+  subMinutes
 } from 'date-fns'
 
 @Component({
@@ -24,6 +26,7 @@ export class AppComponent implements OnInit {
   public days = 0;
   public hours = 0;
   public minutes = 0;
+  public seconds = 0;
 
   constructor() {
   }
@@ -45,5 +48,7 @@ export class AppComponent implements OnInit {
     this.hours = differenceInHours(leftTime, new Date());
     leftTime = subHours(leftTime, this.hours);
     this.minutes = differenceInMinutes(leftTime, new Date());
+    leftTime = subMinutes(leftTime, this.minutes);
+    this.seconds = differenceInSeconds(leftTime, new Date());
   }
 }
