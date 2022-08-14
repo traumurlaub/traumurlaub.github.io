@@ -38,7 +38,7 @@ body {
   display: block;
   width: 40px;
   height: auto;
-  margin: 17% auto 0 auto;
+  margin: 15% auto 0 auto;
 }
 
 .title {
@@ -48,13 +48,15 @@ body {
 
 .trajectory {
   position: absolute;
-  top: 32%;
+  top: 30%;
 }
 
 
 .plane {
   position: absolute;
-  top: 32%;
+  width: 200px;
+  height: auto;
+  top: 30%;
   right: 18%;
   transform: rotate(-7deg);
   animation: planeRotate 5s infinite ease-in-out;
@@ -71,7 +73,7 @@ body {
   border: 1px solid #fff;
   border-radius: 9px;
   margin-top: auto;
-  margin-bottom: 20%;
+  margin-bottom: 18%;
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(8px);
 
