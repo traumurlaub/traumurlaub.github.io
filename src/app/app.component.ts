@@ -20,7 +20,7 @@ import {
 })
 export class AppComponent implements OnInit, AfterViewInit {
   public now = new Date();
-  public targetDate = new Date(2072, 7, 8); // 8 июля
+  public targetDate = new Date(2072, 6, 8); // 8 июля
   public years = `0`;
   public months = `0`;
   public days = `0`;
