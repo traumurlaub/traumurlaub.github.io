@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {
   differenceInYears,
   differenceInMonths,
@@ -18,7 +18,7 @@ import {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class AppComponent implements OnInit {
   public now = new Date();
   public targetDate = new Date(2072, 6, 8); // 8 июля
   public years = `0`;
@@ -38,21 +38,6 @@ export class AppComponent implements OnInit, AfterViewInit {
     setInterval(() => {
       this._update()
     }, 1000);
-  }
-
-  ngAfterViewInit() {
-    this.plane.nativeElement.animate(
-      [
-        {transform: 'rotate(0)', offset: 0},
-        {transform: 'rotate(-15deg)', offset: 0.2},
-        {transform: 'rotate(20deg)', offset: 0.4},
-        {transform: 'rotate(0)', offset: 0.7},
-        {transform: 'rotate(0)', offset: 1}
-      ], {
-        duration: 3000,
-        iterations: Infinity
-      }
-    );
   }
 
   private _update() {
